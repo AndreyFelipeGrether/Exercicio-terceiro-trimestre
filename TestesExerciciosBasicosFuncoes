@@ -1,0 +1,51 @@
+import unittest
+from ExerciciosBasicosFuncoes import *
+
+class TestesExerciciosBasicosFuncoes(unittest.TestCase):
+
+    def test_antecessor_sucessor(self):
+        self.assertEqual(antecessor_sucessor(10), (9, 11))
+
+    def test_formatar_duas_casas(self):
+        self.assertEqual(formatar_duas_casas(5), "5.00")
+
+    def test_substituir_java(self):
+        self.assertEqual(substituir_java_por_python("Curso Java"), "Curso Python")
+
+    def test_numero_par_ou_impar(self):
+        self.assertEqual(numero_par_ou_impar(4), "par")
+        self.assertEqual(numero_par_ou_impar(5), "impar")
+
+    def test_classificar_idade(self):
+        self.assertEqual(classificar_idade(5), "Criança")
+        self.assertEqual(classificar_idade(15), "Adolescente")
+        self.assertEqual(classificar_idade(40), "Adulto")
+        self.assertEqual(classificar_idade(-2), "Idade inválida")
+
+    def test_maior_numero(self):
+        self.assertEqual(maior_numero(10, 5), "10 é maior")
+        self.assertEqual(maior_numero(5, 10), "10 é maior")
+        self.assertEqual(maior_numero(7, 7), "São iguais")
+
+    def test_vogal_ou_consoante(self):
+        self.assertEqual(vogal_ou_consoante("a"), "vogal")
+        self.assertEqual(vogal_ou_consoante("x"), "consoante")
+
+    def test_comparar_senhas(self):
+        self.assertEqual(comparar_senhas("abc", "abc"), "Acesso permitido")
+        self.assertEqual(comparar_senhas("123", "321"), "Acesso negado")
+
+    def test_media_aluno(self):
+        self.assertEqual(media_aluno(8, 9, 7), "Aprovado: 8.00")
+        self.assertEqual(media_aluno(5, 6, 4), "Reprovado: 5.00")
+
+    def test_ordenar_decrescente(self):
+        self.assertEqual(ordenar_decrescente(3, 1, 2), [3, 2, 1])
+
+    def test_calcular_viagem(self):
+        resultado = calcular_viagem(2, 60)
+        self.assertEqual(resultado["distancia"], 120)
+        self.assertEqual(resultado["litros_usados"], 10)
+
+if __name__ == "__main__":
+    unittest.main()
