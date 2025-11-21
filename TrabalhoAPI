@@ -1,0 +1,67 @@
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
+import uuid
+
+app = FastAPI(title="Mohamed Light")
+
+# Banco de dados em memória
+tarefas_db = {}
+
+# Modelo de dados
+class Tarefa(BaseModel):
+    id: str | None = None
+    titulo: str = Field(..., min_length=3)
+    descricao: str | None = None
+    concluida: bool = False
+
+
+# Criar tarefa
+@app.post("/tarefas", status_code=201)
+def criar_tarefa(tarefa: Tarefa):
+    if not tarefa.titulo or len(tarefa.titulo) < 3:
+        raise HTTPException(status_code=422, detail="Título deve ter pelo menos 3 caracteres.")
+
+    tarefa.id = str(uuid.uuid4())
+    tarefas_db[tarefa.id] = tarefa
+    return tarefa
+
+
+# Listar todas as tarefas
+@app.get("/tarefas")
+def listar_tarefas():
+    return list(tarefas_db.values())
+
+
+# Obter tarefa por ID
+@app.get("/tarefas/{id}")
+def obter_tarefa(id: str):
+    tarefa = tarefas_db.get(id)
+    if not tarefa:
+        raise HTTPException(status_code=404, detail="Tarefa não encontrada.")
+    return tarefa
+
+
+# Atualizar tarefa
+@app.put("/tarefas/{id}")
+def atualizar_tarefa(id: str, dados: Tarefa):
+    tarefa = tarefas_db.get(id)
+    if not tarefa:
+        raise HTTPException(status_code=404, detail="Tarefa não encontrada.")
+    if not dados.titulo or len(dados.titulo) < 3:
+        raise HTTPException(status_code=422, detail="Título inválido.")
+
+    dados.id = id
+    tarefas_db[id] = dados
+    return dados
+
+
+# Deletar tarefa
+@app.delete("/tarefas/{id}", status_code=204)
+def deletar_tarefa(id: str):
+    if id not in tarefas_db:
+        raise HTTPException(status_code=404, detail="Tarefa não encontrada.")
+    del tarefas_db[id]
+    return
+
+
+
