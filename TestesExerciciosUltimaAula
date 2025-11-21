@@ -1,0 +1,31 @@
+import unittest
+from ExerciciosBasicosFuncoes import *
+
+class TestesBasicos(unittest.TestCase):
+
+    def test_primos_no_intervalo(self):
+        self.assertEqual(primos_no_intervalo(1, 10), [2, 3, 5, 7])
+
+    def test_ordenar_sem_repeticao(self):
+        self.assertEqual(ordenar_sem_repeticao([3, 1, 2, 3]), [1, 2, 3])
+
+    def test_soma_digitos(self):
+        self.assertEqual(soma_digitos(123), 6)
+        self.assertEqual(soma_digitos(-456), 15)
+
+    def test_eh_palindromo(self):
+        self.assertTrue(eh_palindromo("Ana"))
+        self.assertTrue(eh_palindromo("A sacada da casa"))
+        self.assertFalse(eh_palindromo("Python"))
+
+    def test_frequencia_palavras(self):
+        self.assertEqual(frequencia_palavras("ola ola mundo"),
+                         {"ola": 2, "mundo": 1})
+
+    def test_media_lista(self):
+        self.assertEqual(media_lista([2, 4, 6]), 4)
+        self.assertEqual(media_lista([]), None)
+
+
+if __name__ == "__main__":
+    unittest.main()
