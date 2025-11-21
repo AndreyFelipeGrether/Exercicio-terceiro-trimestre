@@ -1,0 +1,51 @@
+# 1. Números primos em um intervalo
+def primos_no_intervalo(a, b):
+    primos = []
+    for num in range(a, b + 1):
+        if num > 1:
+            eh_primo = True
+            for i in range(2, num):
+                if num % i == 0:
+                    eh_primo = False
+                    break
+            if eh_primo:
+                primos.append(num)
+    return primos
+
+
+# 2. Ordenar e remover repetição
+def ordenar_sem_repeticao(lista):
+    return sorted(list(set(lista)))
+
+
+# 3. Soma dos dígitos
+def soma_digitos(n):
+    soma = 0
+    for digito in str(abs(n)):
+        soma += int(digito)
+    return soma
+
+
+# 4. Verificar palíndromo
+def eh_palindromo(texto):
+    texto = texto.lower().replace(" ", "")
+    return texto == texto[::-1]
+
+
+# 5. Frequência de palavras
+def frequencia_palavras(texto):
+    palavras = texto.lower().split()
+    freq = {}
+    for p in palavras:
+        if p in freq:
+            freq[p] += 1
+        else:
+            freq[p] = 1
+    return freq
+
+
+# 6. Média dos elementos
+def media_lista(lista):
+    if len(lista) == 0:
+        return None
+    return sum(lista) / len(lista)
