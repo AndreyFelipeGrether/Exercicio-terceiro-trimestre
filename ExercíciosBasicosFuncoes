@@ -1,0 +1,101 @@
+
+# Exercício 1 – Antecessor e Sucessor
+
+def antecessor_sucessor(numero):
+    return numero - 1, numero + 1
+
+
+
+# Exercício 2 – Duas casas decimais
+
+def formatar_duas_casas(numero):
+    return f"{numero:.2f}"
+
+
+
+# Exercício 3 – Troca de palavras
+
+def substituir_java_por_python(frase):
+    return frase.replace("Java", "Python")
+
+
+
+# Exercício 4 – Par ou Ímpar
+
+def numero_par_ou_impar(numero):
+    if numero % 2 == 0:
+        return "par"
+    return "impar"
+
+
+
+# 1. Classificação de idade
+
+def classificar_idade(idade):
+    if 1 <= idade < 12:
+        return "Criança"
+    elif 12 <= idade <= 17:
+        return "Adolescente"
+    elif idade >= 18:
+        return "Adulto"
+    return "Idade inválida"
+
+
+
+# 2. Maior de dois números
+
+def maior_numero(a, b):
+    if a > b:
+        return f"{a} é maior"
+    elif a < b:
+        return f"{b} é maior"
+    return "São iguais"
+
+
+
+# 3. Verificar vogal ou consoante
+
+def vogal_ou_consoante(letra):
+    if letra.lower() in "aeiou":
+        return "vogal"
+    return "consoante"
+
+
+
+# 4. Comparação de senhas
+
+def comparar_senhas(s1, s2):
+    if s1 == s2:
+        return "Acesso permitido"
+    return "Acesso negado"
+
+
+
+# 5. Média e aprovação
+
+def media_aluno(n1, n2, n3):
+    media = (n1 + n2 + n3) / 3
+    if media >= 7:
+        return f"Aprovado: {media:.2f}"
+    return f"Reprovado: {media:.2f}"
+
+
+
+# 6. Ordem decrescente
+
+def ordenar_decrescente(a, b, c):
+    return sorted([a, b, c], reverse=True)
+
+
+
+# 7. Cálculo de viagem
+
+def calcular_viagem(tempo, velocidade):
+    distancia = tempo * velocidade
+    litros = distancia / 12
+    return {
+        "velocidade_media": velocidade,
+        "tempo_gasto": tempo,
+        "distancia": distancia,
+        "litros_usados": litros
+    }
